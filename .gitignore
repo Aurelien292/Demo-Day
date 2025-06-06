@@ -1,0 +1,16 @@
+# Environnement virtuel
+venv/
+.env
+
+# Fichiers de cache Python
+__pycache__/
+
+# VS Code settings
+.vscode/
+
+# Logs
+*.log
+
+# Fichiers système
+.DS_Store
+Thumbs.db
