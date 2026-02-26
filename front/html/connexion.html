@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LibertyDrive - Connexion</title>
+  <link rel="stylesheet" href="../css/connexion.css">
+  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+  <header>
+  <div class="top-bar">
+	<a href="../../index.html" class="accueil-link">Accueil</a>
+    <div class="logo">LibertyDrive</div>
+  </div>
+</header>
+
+  <main class="container">
+    <!-- Sélection du type d'utilisateur -->
+    <section class="user-type-selection">
+      <h2>Choisissez votre type d'accès</h2>
+      <div class="user-options">
+        <button class="option-btn" id="conducteur-btn">Conducteur</button>
+        <button class="option-btn" id="proprietaire-btn">Propriétaire de flotte</button>
+      </div>
+    </section>
+    <!-- Formulaire de connexion Conducteur -->
+    <section class="login-form" id="loginFormSection"style="display: none;">
+  <h2>Accédez à votre espace ou inscrivez-vous sur LibertyDrive.</h2>
+  <form id="loginForm">
+    <label for="email">Email :</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="password">Mot de passe :</label>
+    <input type="password" id="password" name="password" required>
+
+    <button type="submit">Se connecter</button>
+    
+  </form>
+  <p class="message-login" id="message-login" style="margin-top: 1em;"></p>
+    <!-- Bouton retour à la sélection du type d'accès -->
+  <button id="back-to-selection" class="back-to-selection-btn">Retour à la sélection du type d'accès</button>
+  <p>Pas de compte ? <a href="javascript:void(0);" id="create-account">Créer un compte</a></p>
+   
+</section>
+
+<!-- Formulaire d'inscription Conducteur -->
+<section class="signup-form" id="signup-form" style="display: none;">
+  <h2>Créez un compte LibertyDrive</h2>
+  <form id="signupForm">
+    <div class="form-row">
+    <div class="form-group">
+    <label for="first-name">Prénom :</label>
+    <input type="text" id="first-name" name="first_name" required>
+    </div>
+    <div class="form-group">
+    <label for="username">Nom d'utilisateur :</label>
+    <input type="text" id="username" name="username" required>
+    </div>
+    </div>
+    <label for="city">Ville :</label>
+    <input type="text" id="city" name="city" required>
+
+    <label for="new-email">Email :</label>
+    <input type="email" id="new-email" name="email" required>
+
+    <label for="new-password">Mot de passe :</label>
+    <input type="password" id="new-password" name="password" required>
+
+    <label for="confirm-password">Confirmer le mot de passe :</label>
+    <input type="password" id="confirm-password" name="confirm-password" required>
+
+    <button type="submit">S'inscrire</button>
+
+    <p>Vous avez déjà un compte ? <a href="javascript:void(0);" id="back-to-login">Retour à la connexion</a></p>
+  </form>
+  <p class="message-signup" id="message-signup"></p>
+  
+</section>
+
+  <!-- Formulaire de connexion Propriétaire de flotte (Garage) -->
+    <section class="garage-login-form" id="garage-login-form" style="display: none;">
+      <h2>Connexion Garage</h2>
+      <form id="garageLoginForm">
+        <label for="garage-email">Email :</label>
+        <input type="email" id="garage-email" name="email" required>
+        <label for="garage-password">Mot de passe :</label>
+        <input type="password" id="garage-password" name="password" required>
+        <button type="garage-submit-form">Se connecter</button>
+      </form>
+      <p class="message-login" id="message-garage-login" style="margin-top: 1em;"></p>
+      <!-- Bouton retour à la sélection du type d'accès -->
+  <button id="back-to-selection" class="back-to-selection-btn">Retour à la sélection du type d'accès</button>
+      <p>Pas encore de garage ? <a href="javascript:void(0);" id="create-garage-account">Créer un garage</a></p>
+       
+    </section>
+
+
+     <!-- Formulaire d'inscription Propriétaire de flotte -->
+    <section class="garage-signup-form" id="garage-signup-form" style="display: none;">
+      <h2>Créer un garage</h2>
+      <form id="garageSignupForm">
+        <label for="garage-name">Nom du garage :</label>
+        <input type="text" id="garage-name" name="nom" required>
+
+        <label for="garage-address">Adresse :</label>
+        <input type="text" id="garage-address" name="adresse" required>
+
+        <label for="garage-city">Ville :</label>
+        <input type="text" id="garage-city" name="ville" required>
+
+        <label for="garage-email">Email :</label>
+        <input type="email" id="garage-signup-email" name="email" required>
+
+        <label for="garage-password">Mot de passe :</label>
+        <input type="password" id="garage-signup-password" name="password" required>
+
+        <label for="garage-phone">Téléphone :</label>
+        <input type="tel" id="garage-phone" name="telephone" required>
+
+        <button type="submit">Créer le garage</button>
+      </form>
+      <p>Déjà un garage ? <a href="javascript:void(0);" id="back-to-garage-login">Retour à la connexion du garage</a></p>
+      <p class="message-signup" id="message-garage-signup"></p>
+    </section>
+
+
+    <!-- Carrousel vertical à droite -->
+    <section class="carousel">
+  <div class="carousel-container">
+    <div class="carousel-column" id="carousel-col-1">
+      <div class="carousel-column-inner" id="col1-inner"></div>
+    </div>
+    <div class="carousel-column" id="carousel-col-2">
+      <div class="carousel-column-inner" id="col2-inner"></div>
+    </div>
+    <div class="carousel-column" id="carousel-col-3">
+      <div class="carousel-column-inner" id="col3-inner"></div>
+    </div>
+  </div>
+  
+</section>
+  </main>
+<footer>
+  <p>© 2025 LibertyDrive. Tous droits réservés.</p>
+</footer>
+  <script src="../js/connexion.js"defer></script>
+</body>
+
+</html>

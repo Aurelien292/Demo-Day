@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Compte Garage</title>
+  <link rel="stylesheet" href="../css/comptegarage.css" />
+  <link rel="stylesheet" href="../css/reservationcomptegarage.css" />
+</head>
+<body>
+  <header>
+    <div class="top-bar">
+      <a href="../../index.html" class="accueil-link">Accueil</a>
+      <div class="logo">LibertyDrive</div>
+      <div id="header-info" style="text-align: right;">
+        <div id="freemium-status"></div>
+        <div id="nb-vehicules"></div>
+      </div>
+    </div>
+  </header>
+
+  <h1>Tableau de bord</h1>
+
+  <!-- Ajouter un bouton pour afficher les réservations -->
+  <div class="button-container">
+    <button id="show-reservations-btn" class="show-reservations-btn">Voir les réservations</button>
+  </div>
+
+  <!-- Section réservations (initialement cachée) -->
+  <div id="reservations-container" class="reservations-container" style="display:none;">
+    <h2>Réservations en attente</h2>
+    <table id="reservations-table">
+      <thead>
+        <tr>
+          
+          <th>Marque</th>
+          <th>Modèle</th>
+          <th>Début de location</th>
+          <th>Fin de location</th>
+          <th>Statut</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="reservations-list">
+        <!-- Les réservations seront insérées ici par JS -->
+      </tbody>
+    </table>
+  </div>
+
+
+  <div id="garage-description-container" class="garage-description-container"></div>
+
+  <!-- Boutons "Modifier" et "Annuler" sous la description -->
+  <div class="description-buttons">
+    <button id="edit-description-btn" class="edit-btn">Modifier</button>
+    <button id="cancel-description-btn" class="cancel-btn" style="display:none;">Annuler</button>
+  </div>
+
+  <!-- Conteneur flex pour les deux colonnes -->
+  <div id="garage-container" style="display: flex; gap: 20px; align-items: flex-start; margin-top: 30px;">
+    
+    <!-- Colonne gauche : infos garage -->
+     
+    <section id="garage-info-container">
+  <h2 id="garage-title">Informations Garage</h2>
+
+  <!-- Zone d'affichage des informations du garage -->
+  <div id="garage-info" class="garage-info"></div>
+
+  <!-- Conteneur pour centrer le bouton -->
+  <div class="button-container">
+    <button id="edit-info-btn" class="edit-btn">Modifier infos</button>
+  </div>
+
+  <!-- Formulaire d'édition (caché au début) -->  
+  <div id="edit-info-form" class="edit-info-form" style="display:none;">
+    <form id="form-edit-garage">
+      <div>
+      
+        <label for="edit-email">Email</label>
+        <input type="email" id="edit-email">
+      </div>
+      <div>
+        <label for="edit-ville">Ville</label>
+        <input type="text" id="edit-ville">
+      </div>
+      <div>
+        <label for="edit-adresse">Adresse</label>
+        <input type="text" id="edit-adresse">
+      </div>
+      <div>
+        <label for="edit-telephone">Téléphone</label>
+        <input type="text" id="edit-telephone">
+      </div>
+       <div class="button-container-submit">
+    <button type="submit" class="save-btn-garage">Sauvegarder</button>
+    <button type="button" id="cancel-info-btn" class="cancel-btn">Annuler</button>
+  </div>
+  </form>
+  </div>
+</section>
+
+    
+     
+    <!-- Colonne droite : Liste des véhicules -->
+<section id="vehicules-list-container">
+  <h2>Vos véhicules</h2>
+
+  <!-- La liste des véhicules sera injectée ici par ton JS -->
+  <div id="vehicule-list"></div>
+
+  <!-- Formulaire d'édition de véhicule (initialement caché) -->
+  <div id="form-container" class="form-container" style="display:none;">
+    <form id="form-edit-vehicule">
+      <h3>Modifier Véhicule</h3>
+      
+      <div>
+        <label for="edit-prix-par-jour">Prix par jour</label>
+        <input type="number" id="edit-prix-par-jour" />
+      </div>
+      <div>
+        <label for="edit-carburant">Carburant</label>
+        <input type="text" id="edit-carburant" />
+      </div>
+      <div>
+        <label for="edit-options">Options</label>
+        <input type="text" id="edit-options" />
+      </div>
+      <div>
+        <label for="edit-kilometrage">Kilométrage</label>
+        <input type="number" id="edit-kilometrage" />
+      </div>
+      <div class="button-container">
+        <button type="submit" class="save-btn-vehicule" id="save-btn-vehicule">Sauvegarder</button>
+        <button type="button" id="cancel-edit-btn">Annuler</button>
+      </div>
+    </form>
+  </div>
+</div>
+</section>
+<!-- Message flash pour Save creation vehicule -->
+<div id="message-flash" class="flash-message" style="display: none;"></div>
+<!-- Modal de confirmation -->
+<div id="confirmationModal" class="modal" style="display: none;">
+  <div class="modal-content">
+    <p id="confirmationMessage"></p>
+    <div class="modal-actions">
+      <button id="btnOui">Oui</button>
+      <button id="btnNon">Non</button>
+    </div>
+  </div>
+</div>
+
+
+
+<div id="modal-ajout-vehicule" class="modal">
+  <div class="modal-ajout-content">
+    <span id="close-ajout-modal" style="float:right;cursor:pointer;">&times;</span>
+    <h3>Ajouter un véhicule</h3>
+    <div>
+      <label for="ajout-images" class="label-upload-button">
+        Ajouter des photos (max 4)
+      </label>
+      <input type="file" id="ajout-images" multiple accept="image/*" style="display:none" />
+    </div>
+    <form id="form-ajout-vehicule">
+  <div><label>Modèle *</label><input id="ajout-modele" required /></div>
+  <div><label>Marque *</label><input id="ajout-marque" required /></div>
+
+  <div>
+    <label>Carburant</label>
+    <select id="ajout-carburant" required>
+      <option>Essence</option>
+      <option>Diesel</option>
+      <option>Electrique</option>
+      <option>Hybride</option>
+      <option>GPL</option>
+      <option>Autre</option>
+    </select>
+  </div>
+
+  <div>
+    <label>Type de véhicule</label>
+    <select id="ajout-type-vehicule" required>
+      <option>Berline</option>
+      <option>SUV</option>
+      <option>Citadine</option>
+      <option>Sportive</option>
+      <option>Cabriolet</option>
+      <option>Break</option>
+    </select>
+  </div>
+
+  <div>
+    <label>Boîte de vitesse</label>
+    <select id="ajout-boite-vitesse" required>
+      <option>Manuelle</option>
+      <option>Automatique</option>
+    </select>
+  </div>
+
+  <div>
+    <label>Crit'Air</label>
+    <select id="ajout-crit-air" required>
+      <option>Electrique</option>
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+      <option>Non classé</option>
+    </select>
+  </div>
+
+  <div><label>Prix/jour *</label><input id="ajout-prix-par-jour" type="number" required /></div>
+  <div><label>Options</label><input id="ajout-options" placeholder="ex: GPS, Clim, Bluetooth" /></div>
+  <div><label>Kilométrage *</label><input id="ajout-kilometrage" type="number" required /></div>
+  <div><label>Nombre de portes *</label><input id="ajout-nb-portes" type="number" required /></div>
+  <div><label>Nombre de places *</label><input id="ajout-nb-places" type="number" required /></div>
+  <div><label>Année de circulation *</label><input id="ajout-annee-circulation" type="number" required /></div>
+<div class="ajout-buttons-modal-vehicule" style="margin-top: 20px;">
+  <button type="submit">Ajouter</button>
+  <button type="button" id="cancel-ajout-vehicule-btn">Annuler</button>
+</div>
+<div>
+  <label for="ajout-permis-requis">
+    Permis requis ?
+    <input type="checkbox" id="ajout-permis-requis" />
+  </label>
+</div>
+</form>
+  
+    <div id="preview-images-container"class ="preview-images"></div>
+  </div>
+</div>
+
+<div id="modal-confirm-cancel" class="modal" style="display: none;">
+  <div class="modal-content">
+    <p>Êtes-vous sûr de vouloir annuler l'ajout ?</p>
+    <div class="modal-actions">
+      <button id="confirm-cancel-ok">Oui</button>
+      <button id="confirm-cancel-cancel">Non</button>
+    </div>
+  </div>
+</div>
+
+<div id="vehicule-modal" class="modal" style="display:none;">
+  <div class="modal-content-vehicule">
+    <span id="close-modal-vehicule" class="close">&times;</span>
+    <h2>Fiche du véhicule</h2>
+    <div id="vehicule-details">
+      <!-- Détails du véhicule seront insérés ici -->
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 LibertyDrive. Tous droits réservés.</p>
+</footer>
+
+<script src="../js/comptegarage.js"></script>
+<script src="../js/reservationcomptegarage.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+/* Style pour la section réservations */
+#reservations-container {
+  margin-top: 30px;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+#reservations-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+#reservations-table th, #reservations-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+#reservations-table th {
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.confirm-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.confirm-btn:hover {
+  background-color: #45a049;
+}
+
+.show-reservations-btn {
+  background: linear-gradient(135deg, #4a90e2, #01172c);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  font-size: 1rem;
+  font-weight: 120;
+  border-radius: 30px;
+  cursor: pointer;
+  user-select: none;
+  width: 175px;
+  text-align: center;
+  margin: 0 auto; /* espace vertical + auto pour centrer */
+  display: block; 
+  transition: background 2.3s ease, color 1.3s ease;
+}
+
+.show-reservations-btn.is-active {
+  background: linear-gradient(135deg, #da8d8d, #2c0101); /* Exemple: couleur rouge */
+  transition: background 2.3s ease, color 1.3s ease;
+}

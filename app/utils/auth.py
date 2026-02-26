@@ -50,7 +50,31 @@ def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(securit
                 detail="Token invalide, 'id' manquant dans le payload"
             )
 
-        return payload  # Retourner le payload pour être utilisé par la suite
+        return {
+            "id": payload["id"],
+            "username": payload["username"]
+        }  # Retourner le payload pour être utilisé par la suite
+        
+    except JWTError:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Token invalide ou corrompu",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+        
+def get_current_garage(credentials: HTTPAuthorizationCredentials = Depends(security)):
+    token = credentials.credentials
+    try:
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+
+        if "id" not in payload:
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="Token invalide, 'id' manquant dans le payload"
+            )
+        # Optionnel : tu peux vérifier un champ 'role' ou 'type' dans le payload pour différencier user / garage
+
+        return payload["id"]  # ici, dict avec au moins l'id du garage
     except JWTError:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,

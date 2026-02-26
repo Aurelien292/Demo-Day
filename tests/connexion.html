@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LibertyDrive - Connexion</title>
+  <link rel="stylesheet" href="../css/connexion.css">
+  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+  <header>
+  <div class="top-bar">
+	<a href="../../index.html" class="accueil-link">Accueil</a>
+    <div class="logo">LibertyDrive</div>
+  </div>
+</header>
+
+  <main class="container">
+    
+    <!-- Formulaire de connexion à gauche -->
+    <section class="login-form" id="loginFormSection">
+  <h2>Accédez à votre espace ou inscrivez-vous sur LibertyDrive.</h2>
+  <form id="loginForm">
+    <label for="email">Email :</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="password">Mot de passe :</label>
+    <input type="password" id="password" name="password" required>
+
+    <button type="submit">Se connecter</button>
+    
+  </form>
+  <p class="message-login" id="message-login" style="margin-top: 1em;"></p>
+  <p>Pas de compte ? <a href="javascript:void(0);" id="create-account">Créer un compte</a></p>
+   
+</section>
+
+<!-- Formulaire d'inscription -->
+<section class="signup-form" id="signup-form" style="display: none;">
+  <h2>Créez un compte LibertyDrive</h2>
+  <form id="signupForm">
+    <div class="form-row">
+    <div class="form-group">
+    <label for="first-name">Prénom :</label>
+    <input type="text" id="first-name" name="first_name" required>
+    </div>
+    <div class="form-group">
+    <label for="username">Nom d'utilisateur :</label>
+    <input type="text" id="username" name="username" required>
+    </div>
+    </div>
+    <label for="city">Ville :</label>
+    <input type="text" id="city" name="city" required>
+
+    <label for="new-email">Email :</label>
+    <input type="email" id="new-email" name="email" required>
+
+    <label for="new-password">Mot de passe :</label>
+    <input type="password" id="new-password" name="password" required>
+
+    <label for="confirm-password">Confirmer le mot de passe :</label>
+    <input type="password" id="confirm-password" name="confirm-password" required>
+
+    <button type="submit">S'inscrire</button>
+
+    <p>Vous avez déjà un compte ? <a href="javascript:void(0);" id="back-to-login">Retour à la connexion</a></p>
+  </form>
+  <p class="message-signup" id="message-signup"></p>
+  
+</section>
+
+
+    <!-- Carrousel vertical à droite -->
+    <section class="carousel">
+  <div class="carousel-container">
+    <div class="carousel-column" id="carousel-col-1">
+      <div class="carousel-column-inner" id="col1-inner"></div>
+    </div>
+    <div class="carousel-column" id="carousel-col-2">
+      <div class="carousel-column-inner" id="col2-inner"></div>
+    </div>
+    <div class="carousel-column" id="carousel-col-3">
+      <div class="carousel-column-inner" id="col3-inner"></div>
+    </div>
+  </div>
+  
+</section>
+  </main>
+<footer>
+  <p>© 2025 Mon site web. Tous droits réservés.</p>
+</footer>
+  <script src="../js/connexion.js"defer></script>
+</body>
+
+</html>

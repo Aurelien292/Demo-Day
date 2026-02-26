@@ -1,0 +1,458 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  
+}
+
+
+main.container {
+  flex: 1; /* Prend toute la hauteur dispo pour pousser le footer en bas */
+
+}
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #f0f0f0;
+  flex-wrap: wrap; /* permet de passer à la ligne si trop étroit */
+}
+
+/* Logo centré grâce au flex-grow */
+.logo {
+  flex-grow: 1;
+  text-align: center;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: bold;
+  font-size: 1.8rem;
+  color: #333;
+  user-select: none;
+}
+
+/* Accueil à gauche */
+.accueil-link {
+  color: #007bff;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 56px;
+  transition: background-color 0.3s ease;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: bold;
+  font-size: 1.8rem;
+  white-space: nowrap; /* empêche le lien de casser en deux lignes */
+}
+
+a.accueil-link:hover,
+a.accueil-link:focus {
+  background-color: #e0f0ff;
+  outline: none;
+}
+
+header {
+  position: relative;
+  background-color: #f0f0f0;
+  backdrop-filter: blur(100px);
+  padding: 0.2em;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 50px 80px rgba(0, 0, 0, 1.8);
+  border-radius: 0 0 20px 20px;
+  margin-bottom: 0;
+  z-index: 1000;
+  top: 0;
+  
+}
+
+.container {
+  display: flex;
+  height: 100dvh; /* Prend 100% de la hauteur de l'écran, même mobile */
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+/* ----------------------------------------
+   Styles généraux pour la section de sélection du type d'utilisateur
+---------------------------------------- */
+
+.user-type-selection {
+  
+  min-width: 80px;
+  max-width: 400px;
+  height: 280px;
+  margin: 90px auto;  /* Centrage automatique avec un espacement supérieur */
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);  /* Ombre légère */
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 0;
+  text-align: center;  /* Centrage du texte */
+  top: 50%;
+  bottom: 50%;
+  transform: translateY(-50%);  /* Centrage vertical */
+}
+
+.user-type-selection h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;  /* Espacement sous le titre */
+  color: #0264b4;
+}
+
+.user-options {
+  display: flex;
+  justify-content: center;
+  gap: 20px;  /* Espacement entre les boutons */
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* ----------------------------------------
+   Styles des boutons pour les choix "Conducteur" et "Propriétaire de flotte"
+---------------------------------------- */
+
+.option-btn {
+  width: 100%;
+  max-width: 250px;  /* Limite la largeur des boutons */
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 50px;  /* Bords arrondis */
+  border: 2px solid #0264b4;  /* Bordure bleue */
+  background-color: #0264b4;  /* Fond bleu */
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;  /* Met le texte en majuscule */
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: all 0.3s ease-in-out;
+  outline: none;  /* Enlève la bordure au focus */
+}
+
+.option-btn:hover {
+  background-color: #004080;  /* Fond plus foncé au survol */
+  border-color: #004080;  /* Bordure plus foncée */
+}
+
+.option-btn:active {
+  transform: scale(0.98);  /* Réduit légèrement le bouton au clic */
+}
+
+
+
+.login-form,.signup-form ,.carousel,.garage-signup-form {
+  width: 40%;
+  
+}
+.login-form,.garage-login-form {
+  min-width: 80px;
+  max-width: 400px;
+  height: 430px;
+  margin: 90px 50px 80px 50px; /* marge intérieure */
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 0;
+}
+
+ .signup-form,.garage-signup-form {
+  min-width: 260px;
+  max-width: 400px;
+  min-height: 570px;
+  margin: 90px 50px 80px 50px; /* marge intérieure */
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  z-index: 0;
+  overflow-y: auto; /* Ajout d'un défilement vertical si nécessaire */
+}
+.signup-form input,
+.signup-form button,
+.garage-signup-form input,
+.garage-signup-form button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  box-sizing: border-box;
+  border-radius: 80px;
+ 
+}
+
+.login-form input,
+.login-form button,
+.garage-login-form input,
+.garage-login-form button 
+ {
+  width: 100%;
+  max-width: 400px; /* limite de largeur */
+  padding: 10px;
+  margin-top: 10px;
+  box-sizing: border-box;
+  border-radius: 80px;
+}
+.form-group {
+  flex: 1; /* chaque champ prend 50% de la largeur de .form-row */
+  display: flex;
+  flex-direction: column;
+}
+.form-row {
+  display: flex;
+  gap: 20px; /* espace entre les deux champs */
+  width: 100%;
+  flex-wrap: wrap; /* pour s’adapter aux petits écrans */
+}
+.signup-form,.signup-choice,.garage-signup-form,.user-type-selection{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  position :relative;
+}
+
+/* Message d'erreur global (connexion et inscription) */
+.message {
+  color: red; /* Couleur des erreurs */
+  font-size: 14px; /* Taille du texte */
+  font-weight: bold;
+  margin-top: 5px; /* Un petit espacement au-dessus */
+   /* Par défaut, caché */
+}
+
+/* Message d'erreur pour la connexion */
+#message-login {
+  margin-top: 100px;
+  font-size: 17px; /* Taille de texte légèrement plus grande pour la connexion */
+  font-weight: normal; /* Moins de graisse pour rendre ça plus léger */
+  
+ 
+}
+
+/* Message d'erreur pour l'inscription */
+#message-signup {
+  font-size: 17px;
+  font-weight: bold;
+  
+}
+
+
+
+/* CARROUSEL */
+
+.carousel {
+  width: 63%;
+  overflow: hidden;
+  display: block;
+  position: relative;
+  margin: 0 auto ; /* marge intérieure */
+  padding: 0;
+  box-sizing: border-box;
+  background-color: rgb(255, 255, 255);
+  
+}
+
+.carousel-container {
+  display: flex;
+  width: 100%;
+  height: 500dvh; /* Ajustement pour les écrans plus petits */
+  gap: 10px;
+  
+}
+
+.carousel-column {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 250dvh;
+  align-items: center;
+  padding: auto 20px; /* marge intérieure gauche et droite */
+  box-sizing: border-box;
+  
+}
+
+.carousel-column-inner {
+  display: flex;
+  flex-direction: column;
+  animation: scroll-up 120s linear infinite;
+  
+}
+
+#carousel-col-2 .carousel-column-inner {
+  animation: scroll-down 120s linear infinite;
+  
+}
+
+.carousel-column img {
+  width: 100%;
+  max-width: 270px;
+  margin-bottom: 25px;
+  cursor: pointer;
+  transition: transform 0.5s ease-in-out; /* animation fluide */
+}
+
+.carousel-column img:hover {
+  transform: rotate(15deg); /* ou rotate(90deg) pour plus fort */
+ 
+}
+
+/* Animation fluide */
+
+@keyframes scroll-up {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes scroll-down {
+  0% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+@media (max-width: 520px) {
+  .container {
+    flex-direction: column;
+    height: auto;
+	
+  }
+  .login-form,.signup-form,.garage-login-form,.garage-signup-form,.user-type-selection {
+  width: 100%;
+  max-width: 250px; /* limite de largeur */
+  margin: 20px auto 20px auto; /* centre horizontalement */
+  height: 550px; /* hauteur fixe */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 20px; /* un peu de douceur */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.0); /* ombrage discret */
+  z-index: 20;
+  backdrop-filter: blur(10px); /* effet de flou */
+  background-color: rgba(1, 132, 165, 0.3)
+}
+
+#conducteur-btn, #proprietaire-btn {
+  
+  max-width: 400px; /* Limite de la largeur maximale */
+  height: 160px; /* Hauteur du bouton */
+  padding: 35px;
+  margin: 10px 0;
+  border-radius: 10px; /* Coins légèrement arrondis */
+  border: 2px solid #0264b4; /* Bordure bleue */
+  background-color: #ffffff; /* Fond blanc */
+  color: #0264b4; /* Couleur du texte */
+  font-size: 1.2rem; /* Taille du texte */
+  font-weight: bold; /* Texte en gras */
+  text-align: center; /* Centrer le texte */
+  transition: all 0.7s ease-out; /* Transition fluide pour les effets */
+}
+
+/* Effet au survol */
+#conducteur-btn:hover, #proprietaire-btn:hover {
+  background-color: #0264b4;
+  color: #ffffff;
+  transform: scale(1.35);
+}
+
+
+
+  .login-form input,
+.login-form button {
+  width: 100%;
+  max-width: 300px;
+  padding: 10px 16px;
+  margin: 10px auto;
+  border-radius: 80px;
+  border: 10px solid #0593d4a2;
+  box-sizing: border-box;
+  font-size: 0.9rem;
+}
+/* Formulaire de connexion Garage */
+.garage-login-form input,
+.garage-login-form button {
+  width: 100%;
+  max-width: 230px;
+  padding: 10px 16px;
+  margin: 10px 5px;
+  border-radius: 80px;
+  border: 5px solid #0264b4;  /* Bordure bleue */
+  box-sizing: border-box;
+  font-size: 0.7rem;
+}
+  .carousel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* en arrière-plan */
+  
+	
+  }
+
+  .carousel-container {
+    flex-wrap: nowrap;
+    justify-content: center;
+  }
+
+  .carousel-column {
+    flex: 0 0 50%; /* 2 colonnes côte à côte, avec un petit espace */
+    margin: 15%;
+	
+  }
+
+  .carousel-column-inner {
+    height: auto;
+	
+  }
+
+  .carousel-column img {
+    height: auto;
+    max-height: 200px;
+	margin-top: 150px;
+	
+	
+  }
+  #carousel-col-2 .carousel-column-inner {
+  animation: scroll-down 200s;
+  
+}
+  
+}
+
+footer {
+  background-color: #d6d6d6;
+  text-align: center;
+  padding: 7px;
+  font-size: 0.9em;
+  color: #555;
+  z-index: 1000;
+  border-top: 0;
+  box-shadow: #555 0px 0px 50px 50px;
+}

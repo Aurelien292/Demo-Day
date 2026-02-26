@@ -1,0 +1,407 @@
+/* Reset and Global Styles */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Pousse le footer en bas */
+}
+
+/* Header */
+header {
+  background-color: #f0f0f0;
+  padding: 1em 0;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 1.8rem;
+  color: #333;
+  font-weight: bold;
+}
+
+.accueil-link {
+  position: absolute;
+  left: 15px;
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.2rem;
+ 
+}
+
+a.accueil-link:hover,
+a.accueil-link:focus {
+  background-color: #e0f0ff;
+  outline: none;
+}
+
+/* Title h1 */
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-top: 80px; /* Éloigne un peu du header */
+}
+
+/* Main Content */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  flex: 1; /* Occupe tout l'espace disponible */
+}
+
+/* Vehicle Card (fiche) */
+.fiche {
+  display: flex;
+  border: 16px solid #007bff;
+  flex-direction: column;
+  max-width: 800px;
+  width: 100%;
+  margin-top: 30px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.fiche-images {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 images par ligne */
+  gap: 10px;
+  justify-items: center;
+  margin-top: 20px;
+}
+
+.fiche-images img {
+  width: 100%;
+  border: 10px solid #ffffff;
+  max-width: 350px;
+  height: 200px;     /* Fixer une hauteur */
+  object-fit: cover; /* Cela permet d'avoir des images de taille uniforme sans déformation */
+  border-radius: 4px;
+}
+
+/* Vehicle Information */
+.fiche-infos {
+  padding: 30px;
+}
+
+.fiche-infos h2 {
+  font-size: 1.6rem;
+  color: #444;
+}
+
+.fiche-infos p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+
+
+.fiche-vehicule h3 {
+  font-size: 2em;    /* Taille du titre */
+  margin-bottom: 10px; /* Espacement sous le titre */
+  text-align: center;
+  border-top: #555 1px solid;
+  border-bottom: #555 1px solid;
+  
+}
+.fiche-garage, .fiche-autres-vehicules ,.fiche-vehicule  {
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.fiche-garage h3 {
+  font-size: 2em;    /* Taille du titre */
+  margin-bottom: 10px; /* Espacement sous le titre */
+  text-align: center;
+  border-top: #555 1px solid;
+  border-bottom: #555 1px solid;
+}
+
+.fiche-autres-vehicules h3 {
+  font-size: 2em;    /* Taille du titre */
+  margin-bottom: 10px; /* Espacement sous le titre */
+  text-align: center;
+  border-top: #555 1px solid;
+  border-bottom: #555 1px solid;
+}
+
+.fiche-autres-vehicules ul {
+  width: 50%;
+  margin: 0 auto;
+  
+}
+
+
+
+
+/* Autre véhicule du garage  */
+
+.vehicule-action button {
+  background: linear-gradient(135deg, #0066ff, #00ccff);
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  cursor: pointer;
+  font-weight: 200;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.vehicule-action button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.vehicule-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.vehicule-info {
+  margin-right: 20px; /* espace entre texte et bouton */
+}
+
+
+
+/* Style général pour le formulaire */
+.fiche-avis {
+  background-color: #eeeeee;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 40px;
+}
+
+.fiche-avis h3 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Conteneur principal pour l'affichage des avis */
+.affichage-avis {
+  background-color: #f9f9f9; /* Fond léger */
+  border: 16px solid #007bff;
+  padding: 20px;
+  margin-top: 30px;
+  border-radius: 8px; /* Coins arrondis */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+  max-height: none;  /* Pas de limite de hauteur */
+  max-width: 750px;
+  overflow-y: auto; /* Permet de défiler si le contenu dépasse */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Titre des avis */
+.affichage-avis h3 {
+  font-size: 1.5rem;
+  color: #333; /* Couleur foncée pour le titre */
+  margin-bottom: 15px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Liste des avis */
+.affichage-avis ul {
+  list-style: none; /* Retirer les puces par défaut */
+  padding: 0;
+  margin: 0;
+}
+
+/* Chaque avis individuel */
+.affichage-avis li {
+  background-color: #fff; /* Fond blanc pour chaque avis */
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px; /* Espacement entre chaque avis */
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease; /* Animation douce pour le survol */
+}
+
+.affichage-avis li:hover {
+  background-color: #eaeaea; /* Changer la couleur de fond au survol */
+  transform: translateY(-2px); /* Légère élévation lors du survol */
+}
+
+/* Contenu de chaque avis */
+.affichage-avis li p {
+  margin: 5px 0;
+  font-size: 1rem;
+  color: #555; /* Couleur gris clair pour le texte */
+}
+
+/* Note de l'avis */
+.affichage-avis li .note {
+  font-weight: bold;
+  color: #ff9800; /* Couleur dorée pour la note */
+}
+
+/* Date de l'avis */
+.affichage-avis li .date {
+  font-size: 0.875rem;
+  color: #888; /* Gris clair pour la date */
+  text-align: right;
+  margin-top: 10px;
+}
+
+/* Formulaire */
+#form-avis {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#form-avis div {
+  display: flex;
+  flex-direction: column;
+}
+
+#form-avis label {
+  font-size: 1rem;
+  color: #414141;
+  margin-bottom: 5px;
+}
+
+#form-avis input[type="number"], 
+#form-avis textarea {
+  font-size: 1rem;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  transition: border 0.3s ease-in-out;
+}
+
+#form-avis input[type="number"]:focus,
+#form-avis textarea:focus {
+  border: 1px solid #007bff;
+}
+
+#form-avis input[type="radio"] {
+  margin-right: 10px;
+}
+
+#form-avis button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  margin-top: 20px;
+}
+
+#form-avis button:hover {
+  background-color: #0056b3;
+}
+
+/* Style des labels radio */
+#form-avis label input[type="radio"] {
+  margin-right: 5px;
+}
+
+#form-avis .type-avis-group {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+/* Style du message flash Creation de vehicule OK */
+.flash-message {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  z-index: 9999;
+  animation: popFade 7s ease-out forwards;
+}
+
+@keyframes popFade {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.5);
+  }
+  10% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.2);
+  }
+  40% {
+    transform: translateX(-50%) scale(1);
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.8);
+  }
+}
+
+/* Responsivité : Centrage du formulaire sur les petits écrans */
+@media screen and (max-width: 600px) {
+  .fiche-avis {
+    padding: 15px;
+  }
+
+  #form-avis {
+    gap: 15px;
+  }
+
+  #form-avis button {
+    font-size: 1rem;
+    padding: 8px;
+  }
+}
+
+
+/* Footer */
+footer {
+  background-color: #d6d6d6;
+  text-align: center;
+  padding: 15px;
+  font-size: 0.9rem;
+  color: #555;
+  border-top: 1px solid #ccc;
+  position: relative;
+  width: 100%;
+  bottom: 0;
+  margin-top: auto; /* Assure que le footer reste en bas */
+}

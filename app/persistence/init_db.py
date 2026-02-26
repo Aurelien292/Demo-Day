@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
 from app.persistence.database import Base, SessionLocal, SQLALCHEMY_DATABASE_URL
-from app.models.user import User
+from app.models import User, Garage, Vehicule, Reservation
 from app.utils.auth import hash_password
 
 def init_db():

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LibertyDrive - Accueil</title>
+  <link rel="stylesheet" href="front/css/style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.2.0/fullcalendar.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.2.0/locale/fr.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.2.0/fullcalendar.min.css" rel="stylesheet" />
+</head>
+<body>
+  <header>
+    <div class="top-bar">
+    <div class="logo">LibertyDrive</div>
+    <div id="message-flash" class="flash-message" style="display: none;"></div>
+    <nav>
+     
+      
+    <a href="front/html/connexion.html" id="login-link">&#128100 Connexion | Inscription</a>
+    <a id="account-link" href="/front/html/moncompte.html" style="display:none;">Mon compte</a>
+    <a id="dashboard-link" href="/front/html/comptegarage.html" style="display:none;">Tableau de bord</a>
+    <button id="logoutBtn" style="display:none;">Déconnexion</button>
+    <button id="logoutBtn-garage" style="display:none;">Déconnexion Garage</button>
+  
+      
+    </nav>
+    </div>
+    <div class="header-stats">
+      
+      <div><span id="vehicleCount">0</span> véhicules sont actuellement référencés sur LibertyDrive.</div>
+      <div><span id="garageCount">0</span> garages sont partenaires.</div>
+    </div>
+  </header>
+<main>
+  <div class="morphsearch" id="morphsearch">
+  <form class="morphsearch-form" action="#" method="get">
+    <input class="morphsearch-input" type="search" placeholder="Recherche..." />
+    <button class="morphsearch-submit" type="submit">Rechercher</button>
+    
+  </form>
+  <span class="morphsearch-close" id="morphsearch-close"></span>
+</div>
+<div class="overlay" id="overlay"></div>
+
+
+  <div class="header-image"></div>
+  <div id="filters-wrapper" style="position: relative; z-index: 10;">
+
+  <section class="filters">
+    <div class="filter-item" id="filter-tri">
+    <span class="filter-title">Trier par</span>
+    <div class="filter-details">
+      <a href="javascript:void(0)" id="sort-asc">Prix croissant</a>
+      <a href="javascript:void(0)" id="sort-desc">Prix décroissant</a>
+    </div>
+    <div id="selected-sort" class="selected-sort"></div>
+  </div>
+
+  <div class="filter-item" id="filter-type">
+    <span class="filter-title">Type de véhicule</span>
+    <div id="vehicleImageContainer" class="vehicle-images-row"></div>
+   
+
+    <div class="filter-details">
+      <p>Tout</p>
+      <p>Berline</p>
+      <p>SUV</p>
+      <p>Sportive</p>
+      <p>Citadine</p>
+      <p>Cabriolet</p>
+      <p>Break</p>
+      
+
+    </div>
+  </div>
+  
+
+ <div class="filter-item" id="filter-loyer">
+  <span class="filter-title">Prix / jrs (€):</span> <span id="prix-valeur">120</span>
+  <div class="filter-details">
+    <input type="range" id="prix-range" min="0" max="200" value="120" />
+  </div>
+</div>
+
+  <div class="filter-item" id="filter-localisation">
+    <span class="filter-title">Localisation</span>
+    <div class="filter-details">
+      <input type="text" id="search-location" placeholder="Ville, adresse..." />
+      <select id="distance-radius">
+        <option value="5">5 km</option>
+        <option value="10" selected>10 km</option>
+        <option value="20">20 km</option>
+        <option value="50">50 km</option>
+      </select>
+      <button id="btn-rechercher">Rechercher</button>
+    </div>
+  </div>
+
+  <div id="results-search "></div>
+
+  <div class="filter-item" id="filter-disponibilite">
+        <span class="filter-title">Disponibilité</span>
+        <div class="filter-details">
+            <label for="disponibilite">
+                <input type="checkbox" id="disponibilite" value="true" />
+            </label>
+        </div>
+    </div>
+    <div id="filter-reset" style="margin: 0.8em 0;">
+  <button id="reset-filtres">Réinitialiser les filtres</button>
+</div>
+
+
+  </section>
+  <section id="resultats-wrapper" style="position: relative; z-index: 1;">
+  <div id="nb-resultats"></div>
+  </section>
+
+  <section class="vehicule-list" id="resultats"></section>
+
+  
+  <div id="message-aucun" style="display:none; text-align:center; color:#e74c3c; font-size:18px; margin-top:10px;">
+    Aucun véhicule trouvé avec ces critères.
+  </div>
+
+
+<div id="reservation-modal" class="modal" style="display: none;">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <h2>Choisir des dates de réservation</h2>
+    <div id="calendar"></div>
+    <button class="confirm-btn">Confirmer</button>
+    <button class="cancel-btn">Annuler</button>
+  </div>
+</div>
+
+</main>
+  <script src="front/js/photo_vehicules.js"></script>
+  <script src="front/js/connexion.js"></script>
+  <script src="front/js/script.js"></script>
+  <script src="front/js/moncompte.js"></script>
+  
+  <footer>
+  <p>© 2025 LibertyDrive. Tous droits réservés.</p>
+</footer>
+</body>
+</html>

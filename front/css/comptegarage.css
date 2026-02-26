@@ -1,0 +1,895 @@
+/* comptegarage.css */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9fafb;
+  color: #333;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #f0f0f0;
+  flex-wrap: wrap; /* permet de passer à la ligne si trop étroit */
+  border-radius: 50px;
+}
+
+/* Logo centré grâce au flex-grow */
+.logo {
+  flex-grow: 1;
+  text-align: center;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: bold;
+  font-size: 1.8rem;
+  color: #333;
+  user-select: none;
+}
+
+/* Accueil à gauche */
+.accueil-link {
+  color: #007bff;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 56px;
+  transition: background-color 0.3s ease;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: bold;
+  font-size: 1.8rem;
+  white-space: nowrap; /* empêche le lien de casser en deux lignes */
+}
+
+a.accueil-link:hover,
+a.accueil-link:focus {
+  background-color: #e0f0ff;
+  outline: none;
+}
+#freemium-status {
+  font-weight: 600;
+  color: #1f6e00;
+  white-space: nowrap;
+}
+
+header {
+  position: relative;
+  background-color: #f0f0f0;
+  backdrop-filter: blur(100px);
+  padding: 0.2em;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 50px 80px rgba(0, 0, 0, 1.8);
+  border-radius: 0 0 20px 20px;
+  margin-bottom: 0;
+  z-index: 1000;
+  top: 0;
+  
+}
+
+nav button {
+  background-color: transparent;
+}
+
+nav button:focus,
+.accueil-link:focus,
+nav a:focus {
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+main.container {
+   min-width: 260px;
+  max-width: 400px;
+  min-height: 570px;
+  margin: 90px 50px 80px 50px; /* marge intérieure */
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+}
+
+/* Title */
+h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-weight: 700;
+  color: #007bff;
+
+}
+/* Conteneur description */
+.garage-description-container {
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin: 20px auto;
+  border-radius: 6px;
+  font-size: 1rem;
+  line-height: 1.4;
+  color: #333;
+  max-width: 700px;
+  width: 90%;
+  box-sizing: border-box;
+}
+.description-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px; /* espace entre les boutons */
+  margin-top: 15px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.garage-description-container.highlight {
+  background-color: #e0f0ff; /* surbrillance bleutée */
+  border-color: #4a90e2; /* couleur bordure accentuée */
+  box-shadow: 0 0 8px rgba(74, 144, 226, 0.6);
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#edit-description-btn,.btn-modifier,.btn-voirplus,.btn-toggle-dispo,#form-ajout-vehicule button[type="submit"]{
+  background: linear-gradient(135deg, #4a90e2, #01172c);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  font-size: 1rem;
+  font-weight: 120;
+  border-radius: 30px;
+  cursor: pointer;
+  user-select: none;
+  width: 120px;
+  text-align: center;
+  margin: 0 auto; /* espace vertical + auto pour centrer */
+  display: block; 
+}
+.btn-supprimer{
+  background: linear-gradient(135deg, #e24a4a, #2c0101);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  font-size: 1rem;
+  font-weight: 120;
+  border-radius: 30px;
+  cursor: pointer;
+  user-select: none;
+  width: 120px;
+  text-align: center;
+  margin: 0 auto; /* espace vertical + auto pour centrer */
+  display: block; 
+}
+.btn-supprimer:hover{
+  background: linear-gradient(135deg, #bd3535, #912a2a);
+  box-shadow: 0 8px 20px rgba(42, 90, 145, 0.6);
+}
+
+
+#edit-description-btn:hover,.btn-modifier:hover,.btn-voirplus:hover,.btn-toggle-dispo:hover,#form-ajout-vehicule button[type="submit"]:hover,.label-upload-button:hover {
+  background: linear-gradient(135deg, #357abd, #2a5a91);
+  box-shadow: 0 8px 20px rgba(42, 90, 145, 0.6);
+}
+
+.label-upload-button {
+  background: linear-gradient(135deg, #4a90e2, #01172c);
+  color: white !important;
+  border: none;
+  padding: 12px 25px;
+  font-size: 1rem;
+  font-weight: 120;
+  border-radius: 30px;
+  cursor: pointer;
+  user-select: none;
+  width: 120px;
+  text-align: center;
+  margin: 0 auto; /* espace vertical + auto pour centrer */
+  display: block; 
+}
+
+.preview-images-container{
+  max-width: 4000px;
+}
+.preview-images {
+  display: flex;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;     /* Alignement en ligne */
+  gap: 10px;
+  margin-top: 10px;
+  
+}
+.preview-images img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+
+
+#edit-description-btn:active,.btn-modifier:active,.btn-supprimer:active,.btn-voirplus:active,.btn-toggle-dispo:active {
+  background: linear-gradient(135deg, #2a5a91, #1f4060);
+  box-shadow: 0 3px 8px rgba(31, 64, 96, 0.7);
+  transform: translateY(6px);
+}
+
+.cancel-btn,.save-btn-garage,#cancel-ajout-vehicule-btn {
+   background: linear-gradient(135deg, #4a90e2, #2c0117);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  font-size: 1rem;
+  font-weight: 120;
+  border-radius: 30px;
+  cursor: pointer;
+  user-select: none;
+  width: 150px;
+  text-align: center;
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  margin: 0 auto; /* espace vertical + auto pour centrer */
+  display: block; 
+}
+
+.cancel-btn:hover,#cancel-ajout-vehicule-btn:hover {
+  background: linear-gradient(135deg, #db6300, #ca0000);
+  color: #222; /* changer couleur du texte aussi si besoin */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+#edit-info-btn{
+  background: linear-gradient(135deg, #4a90e2, #01172c);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  font-size: 1rem;
+  font-weight: 120;
+  border-radius: 30px;
+  cursor: pointer;
+  user-select: none;
+  width: 120px;
+  text-align: center;
+  margin: 0 auto; /* espace vertical + auto pour centrer */
+  display: block; 
+}
+#edit-info-btn:hover,.save-btn-garage:hover  {
+  background: linear-gradient(135deg, #357abd, #2a5a91);
+  box-shadow: 0 8px 20px rgba(42, 90, 145, 0.6);
+}
+
+#edit-info-btn:active {
+  background: linear-gradient(135deg, #2a5a91, #1f4060);
+  box-shadow: 0 3px 8px rgba(31, 64, 96, 0.7);
+  transform: translateY(6px);
+}
+
+/* Garage info rows */
+.button-container {
+  text-align: center;  /* Centre horizontalement les éléments à l'intérieur */
+  margin-top: 20px;     /* Si tu veux un peu d'espace au-dessus du bouton */
+}
+.button-container-submit {
+  display: flex;                   /* Utilise flexbox pour aligner les éléments */
+  justify-content: center;         /* Centre horizontalement les boutons */
+  gap: 10px;                       /* Espacement entre les deux boutons */
+  margin-top: 20px;                 /* Si tu veux un peu d'espace au-dessus */
+}
+#garage-title {
+  text-align: center;
+  font-size: 2rem;
+  color: #013a63;
+  margin-bottom: 20px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  padding-bottom: 10px;
+  width: 100%;
+}
+#garage-info,.vehicule-info {
+          /* largeur fixe 50% */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-sizing: border-box;
+}
+#garage-info-container,#vehicules-list-container {
+  background-color: #ffffff; /* fond blanc propre */
+  border-radius: 12px;       /* coins arrondis doux */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* ombre subtile */
+  padding: 25px 30px;        /* espace intérieur confortable */
+  max-width: 600px;          /* largeur max pour garder une bonne lisibilité */
+  margin: 0 auto 40px;       /* centrer horizontalement et marge en bas */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  transition: box-shadow 0.3s ease;
+}
+.garage-info.highlight-hover {
+  background-color: #e0f0ff;
+  border: 1px solid #4a90e2;
+  box-shadow: 0 0 8px rgba(74, 144, 226, 0.6);
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.vehicule-card {
+  background-color: #fff; /* Fond blanc pour la carte */
+  border-radius: 8px; /* Coins arrondis pour une finition plus douce */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre douce autour de la carte */
+  margin-bottom: 20px; /* Espace sous chaque carte */
+  padding: 15px; /* Padding interne pour séparer les éléments */
+  display: flex;
+  flex-direction: column; /* Organise les éléments en colonne */
+  gap: 15px; /* Espacement entre les sections à l'intérieur de la carte */
+}
+.vehicule-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.vehicule-actions {
+  display: flex;
+  justify-content: space-between; /* Espacement entre les boutons */
+  gap: 10px;
+}
+.vehicule-images {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Deux colonnes de taille égale */
+  gap: 10px; /* Espacement entre les images */
+  margin-top: 10px;
+}
+/* Style pour chaque image dans la grille */
+.vehicule-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px; /* Facultatif : pour des coins arrondis */
+  object-fit: cover; /* Pour que l'image remplisse l'espace sans déformer */
+}
+
+.vehicule-images img {
+  width: 100%;       /* Prend toute la largeur de la colonne */
+  height: 100%;     /* Hauteur fixe */
+  object-fit: cover; /* L’image remplit le conteneur, en rognant si nécessaire */
+  border-radius: 5px; /* Optionnel : coins arrondis */
+  display: block;     /* Pour éviter les petits espaces sous l’image */
+}
+
+.info-row,.vehicule-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f4f7fa;
+  border-radius: 8px;
+  padding: 12px 18px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.07);
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease;
+}
+/* Inputs en mode édition */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+  font-size: 1rem;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: inherit;
+  color: #333;
+  resize: vertical;
+  margin-top: 5px;
+}
+
+/* Label dans formulaire */
+.info-row .label {
+  font-weight: 600;
+  color: #555;
+}
+
+/* Petite marge au-dessus de la textarea */
+textarea {
+  min-height: 80px;
+}
+
+.label {
+  font-weight: 600;
+  color: #555;
+}
+
+.value {
+  font-weight: 500;
+  color: #222;
+  max-width: 60%;
+  text-align: right;
+  word-wrap: break-word;
+}
+
+
+/* Overlay du modal véhicule */
+#vehicule-modal {
+  position: fixed; /* Correction ici */
+  
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  transition: opacity 0.3s;
+  opacity: 1;
+  /* Pour cacher le modal, utilise JS : vehiculeModal.style.display = "none"; */
+}
+
+/* Contenu du modal véhicule */
+.modal-content-vehicule {
+  background: #fff;
+  padding: 32px 28px 24px 28px;
+  border-radius: 18px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25), 0 1.5px 6px rgba(0,0,0,0.08);
+  animation: modalPop 0.35s cubic-bezier(.25,1.7,.5,1.15);
+  position: relative;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+@keyframes modalPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.85) translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Bouton de fermeture du modal */
+#close-modal-vehicule {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  font-size: 2rem;
+  color: #888;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s;
+  z-index: 10;
+}
+#close-modal-vehicule:hover {
+  color: #e24a4a;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .modal-content-vehicule {
+    width: 98%;
+    padding: 18px 6px 14px 6px;
+    max-width: 98vw;
+  }
+}
+
+/* Optionnel : style pour les titres et paragraphes du modal */
+.modal-content-vehicule h3 {
+  margin-top: 0;
+  margin-bottom: 18px;
+  font-size: 1.4rem;
+  color: #013a63;
+  text-align: center;
+  font-weight: bold;
+}
+.modal-content-vehicule p {
+  margin: 8px 0;
+  font-size: 1.05rem;
+  color: #222;
+}
+
+
+
+
+
+
+/* Footer */
+footer {
+  background-color: #d6d6d6;
+  text-align: center;
+  padding: 7px;
+  font-size: 0.9em;
+  color: #555;
+  z-index: 1000;
+  border-top: 0;
+  box-shadow: #555 0px 0px 50px 50px;
+  margin-top: auto;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .info-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .value {
+    text-align: left;
+    max-width: 100%;
+    margin-top: 0.2rem;
+  }
+  
+  .top-bar {
+    justify-content: center;
+  }
+  .logo {
+    flex-grow: 0;
+    font-size: 1.4rem;
+  }
+  nav a, nav button, .accueil-link {
+    margin-left: 0.5rem;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+}
+
+
+/* Style pour le modal */
+.modal-open {
+  overflow: hidden;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); /* Centre le modal */
+  width: 900px; /* Largeur du modal */
+  height: auto; /* Hauteur automatique en fonction du contenu */
+  overflow: hidden;
+  border-radius: 8px; /* Coins arrondis */
+  transition: opacity 0.3s ease;
+}
+
+/* Contenu du modal */
+.modal-content {
+  background-color: #afafaff5; /* Fond blanc pour le contenu */
+  padding: 25px;
+  border-radius: 8px; /* Coins arrondis du contenu */
+  text-align: center; /* Centrer le texte */
+}
+
+/* Message du modal */
+#confirmationMessage {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+/* Actions du modal */
+.modal-actions {
+  display: flex;
+  justify-content: center; /* Centrer les boutons */
+  gap: 20px; /* Espace entre les boutons */
+}
+
+/* Boutons du modal */
+.modal button {
+  padding: 12px 24px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  background-color: #4CAF50; /* Couleur de fond verte */
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.ajout-buttons-modal-vehicule{
+  
+  display: flex;
+  justify-content: center; /* Centre les boutons */
+  gap: 20px; /* Espace entre les boutons */
+  margin-top: 20px; /* Espace au-dessus des boutons */
+}
+/* Style Ajouter Vehicule */
+.btn-ajouter-vehicule {
+  display: block;           /* Pour prendre toute la largeur disponible */
+  margin: 20px auto;        /* Centre horizontalement avec marge verticale */
+  padding: 12px 24px;       /* Un peu d’espace intérieur */
+  background-color: #007BFF; /* Bleu moderne */
+  color: white;             /* Texte blanc */
+  font-size: 1.1rem;        /* Taille de texte confortable */
+  font-weight: 600;         /* Un peu plus gras */
+  border: none;             /* Sans bordure */
+  border-radius: 6px;       /* Bords arrondis */
+  cursor: pointer;          /* Curseur pointer au survol */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Petite ombre portée */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  max-width: 200px;         /* Largeur max pour pas trop grand */
+  text-align: center;       /* Centrer le texte */
+}
+
+.btn-ajouter-vehicule:hover {
+  background-color: #0056b3; /* Bleu plus foncé au hover */
+  transform: translateY(-2px); /* Petit effet de levée */
+}
+
+
+
+/* Contenu du modal d’ajout */
+.modal-ajout-content {
+  background-color: #cfcfcf;
+  padding: 30px;
+  border-radius: 10px;
+  width: 90%;
+  width: auto;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centre horizontalement */
+  
+}
+
+
+/* Titres et champs du formulaire */
+.modal-ajout-content h3 {
+  
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+#form-ajout-vehicule {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+
+
+#form-ajout-vehicule label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #444;
+}
+
+#form-ajout-vehicule input,
+#form-ajout-vehicule select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+
+/* Style global du formulaire */
+
+#form-edit-vehicule {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+  color: #333;
+}
+
+#form-edit-vehicule h3 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+
+
+/*Modal de confirmation pour annuler l'ajout de véhicule */
+
+#modal-confirm-cancel {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 100%;
+  height: 100%;
+}
+
+#modal-confirm-cancel .modal-content {
+  background-color: #fff;
+  padding: 20px 30px;
+  border-radius: 8px;
+  text-align: center;
+  max-width: 400px;
+  margin: 100px auto;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+#modal-confirm-cancel .modal-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+#modal-confirm-cancel button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#confirm-cancel-ok {
+  background-color: #f44336;
+  color: white;
+}
+
+#confirm-cancel-cancel {
+  background-color: #4CAF50;
+  color: white;
+}
+/* Style du bouton "Sauvegarder" */
+#save-btn-vehicule {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 48%;
+}
+
+#save-btn-vehicule:hover {
+  background-color: #2980b9;
+}
+
+#save-btn-vehicule:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+/* Style du message flash Creation de vehicule OK */
+.flash-message {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  z-index: 9999;
+  animation: popFade 7s ease-out forwards;
+}
+
+@keyframes popFade {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.5);
+  }
+  10% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.2);
+  }
+  40% {
+    transform: translateX(-50%) scale(1);
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.8);
+  }
+}
+
+/* Style du bouton "Annuler" pour info garage  */
+#cancel-edit-btn {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 48%;
+}
+
+#cancel-edit-btn:hover {
+  background-color: #c0392b;
+}
+
+#cancel-edit-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Conteneur des boutons */
+.button-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Espacement général */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form div {
+  margin-bottom: 20px;
+}
+
+h2 {
+   text-align: center;
+  font-size: 2rem;
+  color: #013a63;
+  margin-bottom: 20px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  padding-bottom: 10px;
+  width: 100%;
+}
+
+.vehicule-image-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.vehicule-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.btn-delete-image {
+  display: none;
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: rgba(255,255,255,0.85);
+  border: none;
+  color: #e24a4a;
+  font-size: 1.3rem;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 2px 8px;
+  z-index: 2;
+  transition: background 0.2s;
+}
+.vehicule-image-wrapper:hover .btn-delete-image {
+  display: block;
+}
+.btn-delete-image:hover {
+  background: #e24a4a;
+  color: #fff;
+}
+

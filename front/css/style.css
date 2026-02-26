@@ -1,0 +1,1123 @@
+/* ========================== */
+/* Reset basique et Styles globaux */
+/* ========================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+main {
+  flex: 1;
+  width: 100%;
+  background-color: #f0f0f0
+}
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: #f0f0f0; /* Couleur de fond claire */
+  color: #333; /* Couleur de texte sombre */
+  line-height: 1.6; /* Meilleure lisibilité */
+  font-size: 16px; /* Taille de police par défaut */
+  min-width: 200px
+  
+}
+
+/* ========================== */
+/* Bannière (Header) */
+/* ========================== */
+header {
+  background-color: #f0f0f0; /* gris */
+  /*color: rgb(161, 0, 0);*/
+  padding: 10px 20px;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  margin-right: 20px; /* espace entre l'image et le texte */
+  margin-left: 30px;
+  
+}
+
+.logo {
+  font-size: 1.1em;
+  font-weight: bold;
+}
+header .logo {
+  font-weight: bold;
+  font-size: 1.4em;
+  cursor: default;
+  color: black;
+}
+nav{
+  display: flex;
+}
+
+header nav a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  margin-left: 25px;
+  font-weight: 600;
+  font-size: 1em;
+  transition: color 0.3s;
+  
+}
+header nav a:hover {
+  color: rgb(161, 0, 0); /* Couleur rouge au survol */
+}
+.header-stats {
+  
+  color: #333;
+  padding: 0.3em 0;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5em 1em;
+}
+
+#logoutBtn,#logoutBtn-garage {
+  background: none;
+  border: none;
+  color: rgb(219, 0, 0);      /* même couleur que le lien */
+  text-decoration: none;    /* comme le lien */
+  margin-left: 25px;
+  font-weight: 600;
+  font-size: 1em;
+  cursor: pointer; 
+  position: relative;         /* pointeur souris comme un lien */
+  top: -5.5px;              /* pour éviter padding par défaut du bouton */
+  font-family: inherit;     /* hérite police pour cohérence */
+}
+
+.header-image {
+  width: calc(100% - 50px); /* prend tout l'espace sauf celui réservé au logo */
+  height: 200px; /* ajuste la hauteur comme tu veux */
+  background-image: url('/front/html/images/index/header.jpg'); /* chemin vers ton image */
+  background-size: cover;       /* couvre toute la zone */
+  background-position: center;  /* centre l’image */
+  background-repeat: no-repeat;
+  margin: 10px 0; /* espace vertical entre header et filtre */
+  border-radius: 0px; /* optionnel, coins arrondis */
+  margin-right: 20px; /* espace entre l'image et le texte */
+  margin-left: 30px;
+  
+}
+
+/* ========================== */
+/* Barre de filtres */
+/* ========================== */
+
+.filters {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 15px 10px;
+  background-color: #f9f9f9;
+  width: 90vw; 
+  max-width: 1000px;
+  min-width: 600px; /* largeur minimale */
+  height: 90px;
+  top: -190px; 
+  transition: all 0.3s ease;
+  border-radius: 40px;
+  box-sizing: border-box;
+  
+}
+.filters > .filter-item:not(:last-child) {
+  position: relative;
+  align-items: center;
+  
+}
+
+.filters > .filter-item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  right: 0px;
+  height: 40px;
+  width: 2px;
+  background-color: #000000; /* couleur de la barre */
+}
+
+.filters:hover {
+  width: 1100px; /* élargit la barre au survol */
+  height: 150px;
+  border-radius: 150px;
+  overflow: visible;
+  pointer-events: auto;
+}
+
+.filters::after {
+  content: "";
+  position: absolute;
+  top: 55%;               /* verticale: milieu de .filters */
+  left: 50%;              /* horizontale: milieu de .filters */
+  transform: translate(-50%, -50%); /* recentrer le point central */
+  width: 700px;           /* largeur fixe de la ligne */
+  height: 1px;            /* épaisseur de la ligne */
+  background-color: transparent; /* invisible par défaut */
+  
+}
+
+.filters:hover::after {
+  background-color: #000; /* ligne noire visible au hover */
+}
+
+.filter-title {
+  margin-right: 10px; /* espace pour la barre */
+  font-weight: bold;
+  text-align: left; /* ou center selon ton besoin */
+}
+
+.filter-item {
+  align-self: flex-start;
+  max-width: 150px;
+  position: relative;
+  padding: 10px 5px;
+  overflow: hidden;
+  max-height: 100%;
+  transition: max-height 0.4s ease, background-color 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  z-index: 15;
+}
+
+.filter-item:hover {
+  position: relative;
+  overflow: visible; 
+  justify-content: center;
+  max-height: 800px;
+  z-index: 100;
+}
+
+.filter-details {
+  opacity: 0;
+  margin-top: 40px;
+  transition: opacity 0.7s ease;
+  display: flex;
+  flex-direction: row;
+  white-space: nowrap;
+  gap: 8px;
+  overflow: hidden; /* cache avant hover */
+  padding: 5px; /* Espacement interne */
+}
+
+.filter-item:hover .filter-details {
+  opacity: 1;
+  max-height: none; 
+  overflow: visible;
+  z-index: 9;
+}
+
+.filter-details a,
+.filter-details p,
+.filter-details input,
+.filter-details label {
+  display: block;
+  font-size: 0.9em;
+  color: #333;
+  padding: 1px 4px;
+  text-decoration: none;
+  border-radius: 4px;
+  white-space: nowrap; /* évite de couper les mots */
+  
+}
+
+.filter-details a:hover,
+.filter-details p:hover {
+  background-color: #e0e0e0;
+  
+}
+
+.filter-item input,
+.filter-item p {
+  font-weight: normal;
+  font-size: 0.9em;
+  margin: 5px 0;
+  
+}
+
+.filters select,
+.filters input {
+  padding: 6px 10px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  font-size: 0.85em;
+  font-weight: bold;
+  font-family: 'Segoe UI';
+}
+#filter-loyer {
+  display:flex;
+  gap: 1px;
+  align-items: center;
+  white-space: nowrap;
+  
+}
+#filter-loyer .filter-details input[type="range"] {
+  margin-top: -30px; /* remonte de 10px, ajuste selon besoin */
+}
+
+#reset-filtres {
+  width: 100px;
+  top:-12px;
+  right: 7px;
+  padding: 8px 15px;
+  position: relative;
+  background-color: #dc3545;
+  color: white;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+#reset-filtres:hover {
+  background-color: #c82333;
+  position: relative;
+}
+
+/* ========================== */
+/* Récupération des images de véhicules */
+/* ========================== */
+.vehicle-images-row {
+  position: absolute;
+  top: 30px; /* ajuster pour bien placer sous le titre */
+  display: flex;
+  gap: 8px;
+  max-width: 100%;
+  padding: 5px 0;
+  right: 10px;
+  flex-wrap: wrap;
+  z-index: 0; /* images en dessous de tout le contenu */
+  row-gap: 0px; /* Réduit l'espace vertical entre les lignes (testé à 2px pour plus de proximité) */
+  
+}
+
+.vehicle-images-row img {
+  width: 28px;
+  height: auto;
+  margin-top: -13px;
+}
+
+.vehicule-images {
+  flex: 0 0 40%; /* 40% pour l'image */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.vehicule-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  
+}
+
+/* ========================== */
+/* Sélection et Tri */
+/* ========================== */
+#selected-sort {
+  display: flex;
+  position: fixed;
+  top: 40px;
+  
+  visibility: hidden;
+  color: #333;  
+  z-index: 1000; /* au-dessus des autres éléments */
+}
+#selected-sort.visible {
+  
+  visibility: visible;
+}
+
+/* ========================== */
+/* Conteneur pour la localisation */
+/* ========================== */
+.localisation-container {
+  position: relative;
+  width: 180px; /* fixe la taille, évite les décalages */
+}
+
+.localisation-container input[type="text"] {
+  opacity: 0;
+  pointer-events: none;
+  width: 100%;
+  transition: opacity 0.3s ease;
+  position: absolute;
+  top: 24px; /* ajuste selon la hauteur du label */
+  left: 0;
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.localisation-container:hover input[type="text"] {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#prix-valeur {
+  margin-left: 8px;
+  font-size: 1em;
+  color: #2a8fbd;
+  font-weight: bold;
+}
+
+/* ========================== */
+/* Section des Résultats des Véhicules */
+/* ========================== */
+
+#resultats {
+  position:relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;  /* Espacement entre les cartes */
+  padding: 20px;
+  justify-content: center;  /* Centre les cartes horizontalement */
+  background-color: #f0f0f0;  /* Couleur de fond claire */
+  z-index: 1;
+}
+#resultats-wrapper {
+  position: relative;
+  z-index: 1;
+  margin-top: 200px;
+  
+}
+
+/* Style du message flash Creation de vehicule OK */
+.flash-message {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  z-index: 9999;
+  animation: popFade 7s ease-out forwards;
+}
+
+@keyframes popFade {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.5);
+  }
+  10% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.2);
+  }
+  40% {
+    transform: translateX(-50%) scale(1);
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.8);
+  }
+}
+
+/* ========================== */
+/* Style des Cartes de Véhicules */
+/* ========================== */
+.vehicule-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.vehicule-card-content {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  min-width: 200px; 
+  max-height: 350px; /* Limite la hauteur pour éviter les débordements */
+}
+
+.vehicule-card-content:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.voir-plus-btn {
+  position: absolute;
+  margin-top: 8px;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8px 16px;
+  font-size: 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.vehicule-card-content:hover .voir-plus-btn {
+  opacity: 1;
+}
+.vehicule-card {
+  width: 100%;
+  max-width: 1000px;       /* 👈 S’étire jusqu’à 1000px max */
+  min-width: 250px;        /* 👈 Ne descend pas en dessous de 520px */
+  display: flex;
+  flex-direction: row;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: width 0.2s ease; /* 👈 Ajoute une animation fluide */
+}
+
+.vehicule-marque,
+.vehicule-modele,
+.vehicule-prix,
+.vehicule-carburant,
+.vehicule-type,
+.vehicule-ville {
+  margin: 10px 0;
+  font-size: 12px;
+  color: #555;
+}
+
+.vehicule-marque{
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #222;
+}
+
+.vehicule-marque span {
+  font-size: 0.7rem;
+  color: #5c5c5c;
+}
+
+/* Style pour le titre de la marque (gras et plus grand) */
+.vehicule-modele span,
+.vehicule-prix span,
+.vehicule-carburant span,
+.vehicule-type span,
+.vehicule-ville span {
+  font-weight: bold;
+  color: #333;
+}
+
+.reserver-btn {
+   background: linear-gradient(135deg, #4a90e2, #01172c);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  font-size: 1rem;
+  font-weight: 120;
+  border-radius: 30px;
+  cursor: pointer;
+  user-select: none;
+  width: 200px;
+  text-align: center;
+  margin: 0 auto; /* espace vertical + auto pour centrer */
+  display: block; 
+  flex-wrap: nowrap;
+  margin-top: 25px;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    margin: 15% auto;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 5px;
+    z-index: 200;
+}
+
+/* Fermeture du modal */
+.close-btn {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    float: right;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: black;
+}
+
+/* Boutons */
+button {
+    padding: 10px;
+    border: none;
+    color: white;
+    background-color: #4CAF50;
+    cursor: pointer;
+    margin: 5px;
+}
+.confirm-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+button.cancel-btn {
+    background-color: #f44336;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+/* Calendrier */
+#calendar {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+/* Styles pour le calendrier */
+.flatpickr-calendar {
+  z-index: 10000; /* Assure que le calendrier est au-dessus des autres éléments */
+}
+
+/* Style pour les prix en particulier */
+.vehicule-prix {
+  font-size: 8px;
+  color: #ff7700;  /* Une couleur orange pour attirer l'attention */
+}
+
+/* Ajout d'un espacement général entre les éléments */
+.vehicule-card p {
+  line-height: 1;
+}
+
+
+
+
+/* ========================== */
+/* Description du Véhicule */
+/* ========================== */
+
+.vehicule-description {
+  flex: 1 1 40%; /* 60% pour le texte */
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+}
+
+/* ========================== */
+/* Gestion des résultats vides */
+/* ========================== */
+#resultats p {
+  text-align: center;
+  font-size: 18px;
+  color: #e74c3c;
+  margin-top: 10px;
+}
+#nb-resultats {
+  font-weight: bold;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 18px;
+  color: #0080ff; /* Tu peux personnaliser */
+}
+
+
+.vehicule-image-container {
+  position: relative; /* très important pour le badge */
+  display: inline-block; /* permet de contenir l'image et le badge */
+  width: 100%;
+  height: auto;
+  
+}
+
+.vehicule-image-container img.vehicule-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.badge-forte-demande {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  border: 4px solid rgba(255, 0, 0, 0.9);
+  background-color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 0, 0, 1);
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bolder;
+  font-size: 1rem;
+  z-index: 10;
+  animation: slide-left-right 3s ease-in-out infinite alternate, text-blink 2.5s infinite alternate;
+  
+}
+
+@keyframes slide-left-right {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(60px); /* décalage de 10px à droite */
+  }
+}
+
+/* Clignotement */
+@keyframes text-blink {
+  0% {
+    color: rgba(255, 0, 0, 0.9);
+  }
+  100% {
+    color: rgb(255, 153, 0);
+  }
+}
+
+/* ========================== */
+/* footer */
+/* ========================== */
+
+footer {
+  background-color: #d6d6d6;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9em;
+  color: #555;
+  z-index: 1000;
+  box-shadow: #555 0px 0px 50px 50px;
+  
+}
+
+/* ========================== */
+/* responsive */
+/* ========================== */
+@media(max-width: 992px) {
+  .vehicules {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media(max-width: 600px) {
+  .filters {
+    flex-direction: column;
+    align-items: center;
+  }
+  .vehicules {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+
+/*Bouton de recherche*/
+#search-toggle {
+  display: flex;
+  align-items: center;
+  gap: 1.5px; /* espace entre la loupe et l'input */
+}
+
+#search-toggle a {
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+#search-toggle input[type="search"] {
+  font-size: 0.9em;
+  padding: 6px 2px;
+  width: 100px;
+  border: 5px solid #cccccc;
+  border-radius: 20px;
+}
+html, body {
+	height: 100%;
+}
+
+body {
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+
+.morphsearch {
+  width: 200px;
+  min-height: 40px;
+  background: gray;
+  position: fixed;
+  z-index: 10000;
+  top: 50px;
+  right: 50px;
+  transform-origin: 100% 0;
+  
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none; /* empêche les clics quand caché */
+
+  transition-property: opacity, min-height, width, top, right;
+  transition-duration: 1.5s;
+  transition-timing-function: cubic-bezier(0.7,0,0.3,1);
+}
+
+.morphsearch.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+
+  width: 100%;
+  min-height: 100%;
+  top: 0;
+  right: 0;
+}
+
+.morphsearch-form {
+	width: 100%;
+	height: 40px;
+	margin: 0 auto;
+	position: relative;
+	-webkit-transition-property: width, height, -webkit-transform;
+	transition-property: width, height, transform;
+	-webkit-transition-duration: 0.5s;
+	transition-duration: 0.5s;
+	-webkit-transition-timing-function: cubic-bezier(0.7,0,0.3,1);
+	transition-timing-function: cubic-bezier(0.7,0,0.3,1);
+}
+
+.morphsearch.open .morphsearch-form {
+	width: 80%;
+	height: 160px;
+	-webkit-transform: translate3d(0,3em,0);
+	transform: translate3d(0,3em,0);
+}
+
+.morphsearch-input {
+	width: 100%;
+	height: 100%;
+	padding: 0 10% 0 10px;
+	font-weight: 700;
+	border: none;
+	background: transparent;
+	font-size: 0.8em;
+	color: #c2c2c2;
+	-webkit-transition: font-size 0.5s cubic-bezier(0.7,0,0.3,1);
+	transition: font-size 0.5s cubic-bezier(0.7,0,0.3,1);
+  display: none;
+}
+
+.morphsearch-input::-ms-clear { /* remove cross in IE */
+    display: none;
+}
+
+.morphsearch.hideInput .morphsearch-input {
+	color: transparent;
+	-webkit-transition: color 0.3s;
+	transition: color 0.3s;
+}
+
+.morphsearch.open .morphsearch-input {
+	font-size: 7em;
+}
+
+/* placeholder */
+.morphsearch-input::-webkit-input-placeholder {
+	color: #c2c2c2;
+}
+
+.morphsearch-input:-moz-placeholder {
+	color: #c2c2c2;
+}
+
+.morphsearch-input::-moz-placeholder {
+	color: #c2c2c2;
+}
+
+.morphsearch-input:-ms-input-placeholder {
+	color: #c2c2c2;
+}
+
+/* hide placeholder when active in Chrome */
+.gn-search:focus::-webkit-input-placeholder {
+	color: transparent;
+}
+
+input[type="search"] { /* reset normalize */
+	-webkit-box-sizing: border-box; 
+	box-sizing: border-box;	
+  background-color: transparent;
+}
+
+.morphsearch-input:focus,
+.morphsearch-submit:focus {
+	outline: none;
+}
+
+.morphsearch-submit {
+  display:none;
+	position: absolute;
+	width: 80px;
+	height: 80px;
+	text-indent: 100px;
+	overflow: hidden;
+	right: 0;
+	top: 50%;
+	background: transparent url('/front/html/images/index/magnifier.svg') no-repeat center center;
+	background-size: 100%;
+	border: none;
+	pointer-events: none;
+	transform-origin: 50% 50%;
+	opacity: 0;
+	-webkit-transform: translate3d(-30px,-50%,0) scale3d(0,0,1);
+	transform: translate3d(-30px,-50%,0) scale3d(0,0,1);
+}
+.morphsearch.open .morphsearch-input,
+.morphsearch.open .morphsearch-submit {
+  display: block; /* ou inline-block selon besoin */
+}
+
+.morphsearch.open .morphsearch-submit {
+	pointer-events: auto;
+	opacity: 1;
+	-webkit-transform: translate3d(-30px,-50%,0) scale3d(1,1,1);
+	transform: translate3d(-30px,-50%,0) scale3d(1,1,1);
+	-webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+	transition: opacity 0.3s, transform 0.3s;
+	-webkit-transition-delay: 0.5s;
+	transition-delay: 0.5s;
+}
+
+.morphsearch-close {
+	width: 36px;
+	height: 36px;
+	position: absolute;
+	right: 1em;
+	top: 1em;
+	overflow: hidden;
+	text-indent: 100%;
+	cursor: pointer;
+	pointer-events: none;
+	opacity: 0;
+	-webkit-transform: scale3d(0,0,1);
+	transform: scale3d(0,0,1);
+}
+
+.morphsearch.open .morphsearch-close {
+	opacity: 1;
+	pointer-events: auto;
+	-webkit-transform: scale3d(1,1,1);
+	transform: scale3d(1,1,1);
+	-webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+	transition: opacity 0.3s, transform 0.3s;
+	-webkit-transition-delay: 0.5s;
+	transition-delay: 0.5s;
+}
+
+.morphsearch-close::before,
+.morphsearch-close::after {
+	content: '';
+	position: absolute;
+	width: 2px;
+	height: 100%;
+	top: 0;
+	left: 50%;
+	border-radius: 3px;
+	opacity: 0.2;
+	background: #000;
+}
+
+.morphsearch-close:hover.morphsearch-close::before,
+.morphsearch-close:hover.morphsearch-close::after {
+	opacity: 1;
+}
+
+.morphsearch-close::before {
+	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+
+.morphsearch-close::after {
+	-webkit-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+}
+
+.morphsearch-content {
+	color: #333;
+	margin-top: 4.5em;
+	width: 100%;
+	height: 0;
+	overflow: hidden;
+	padding: 0 10.5%;
+	background: #f1f1f1;
+	position: absolute;
+	pointer-events: none;
+	opacity: 0;
+}
+
+.morphsearch.open .morphsearch-content {
+	opacity: 1;
+	height: auto;
+	overflow: visible; /* this breaks the transition of the children in FF: https://bugzilla.mozilla.org/show_bug.cgi?id=625289 */
+	pointer-events: auto;
+	-webkit-transition: opacity 0.3s 0.5s;
+	transition: opacity 0.3s 0.5s;
+}
+
+.dummy-column {
+	width: 30%;
+	padding: 0 0 6em;
+	float: left;
+	opacity: 0;
+	-webkit-transform: translate3d(0,100px,0);
+	transform: translateY(100px);
+	-webkit-transition: -webkit-transform 0.5s, opacity 0.5s;
+	transition: transform 0.5s, opacity 0.5s;
+}
+
+.morphsearch.open .dummy-column:first-child {
+	-webkit-transition-delay: 0.4s;
+	transition-delay: 0.4s;
+}
+
+.morphsearch.open .dummy-column:nth-child(2) {
+	-webkit-transition-delay: 0.45s;
+	transition-delay: 0.45s;
+}
+
+.morphsearch.open .dummy-column:nth-child(3) {
+	-webkit-transition-delay: 0.5s;
+	transition-delay: 0.5s;
+}
+
+.morphsearch.open .dummy-column {
+	opacity: 1;
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+}
+
+.dummy-column:nth-child(2) {
+	margin: 0 5%;
+}
+
+.dummy-column h2 {
+	font-size: 1em;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	font-weight: 800;
+	color: #c2c2c2;
+	padding: 0.5em 0;
+}
+
+.round {
+	border-radius: 50%;
+}
+
+.dummy-media-object {
+	padding: 0.75em;
+	display: block;
+	margin: 0.3em 0;
+	cursor: pointer;
+	border-radius: 5px;
+	background: rgba(118,117,128,0.05);
+}
+
+.dummy-media-object:hover,
+.dummy-media-object:focus {
+	background: rgba(118,117,128,0.1);
+}
+
+.dummy-media-object img {
+	display: inline-block;
+	width: 50px;	
+	margin: 0 10px 0 0;
+	vertical-align: middle;
+}
+
+.dummy-media-object h3 {
+	vertical-align: middle;
+	font-size: 0.85em;
+	display: inline-block;
+	font-weight: 700;
+	margin: 0 0 0 0;
+	width: calc(100% - 70px);
+	color: rgba(145,145,145,0.7);
+}
+
+.dummy-media-object:hover h3 {
+	color: rgba(236,90,98,1);
+}
+
+/* Overlay */
+.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.5);
+	opacity: 0;
+	pointer-events: none;
+	-webkit-transition: opacity 0.5s;
+	transition: opacity 0.5s;
+	-webkit-transition-timing-function: cubic-bezier(0.7,0,0.3,1);
+	transition-timing-function: cubic-bezier(0.7,0,0.3,1);
+  z-index: 9998;
+}
+
+.overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.morphsearch.open ~ .overlay {
+	opacity: 1;
+}
+
+@media screen and (max-width: 53.125em) {
+	.morphsearch-input {
+		padding: 0 25% 0 10px;
+	}
+	.morphsearch.open .morphsearch-input {
+		font-size: 2em;
+	}
+	.dummy-column {
+		float: none;
+		width: auto;
+		padding: 0 0 2em;
+	}
+	.dummy-column:nth-child(2) {
+		margin: 0;
+	}
+	.morphsearch.open .morphsearch-submit {
+		-webkit-transform: translate3d(0,-50%,0) scale3d(0.5,0.5,1);
+		transform: translate3d(0,-50%,0) scale3d(0.5,0.5,1);
+	}
+}
+
+@media screen and (max-width: 60.625em) {
+	.morphsearch {
+		width: 80%;
+		top: 10%;
+		right: 10%;
+	}
+}
+

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mon compte</title>
+  <link rel="stylesheet" href="../css/moncompte.css" />
+</head>
+<body>
+	<header>
+  <div class="top-bar">
+	<a href="../../index.html" class="accueil-link">Accueil</a>
+    <div class="logo">LibertyDrive</div>
+  </div>
+</header>
+<main id="content">
+  <h1>Mon compte</h1>
+
+  <section id="infos-utilisateur">
+    <h2>Mes informations</h2>
+    <p><strong>Nom d'utilisateur :</strong> <span id="username"></span></p>
+    <p><strong>Prénom :</strong> <span id="first_name"></span></p>
+    <p><strong>Email :</strong> <span id="email"></span></p>
+
+    <form id="update-user-form">
+      <label for="city">Ville :</label>
+      <input type="text" id="city" name="city" placeholder="Votre ville" />
+
+      <label for="password">Nouveau mot de passe :</label>
+      <input type="password" id="password" name="password" placeholder="Aucun changement demandé." />
+
+      <button type="submit">Mettre à jour</button>
+      <p id="update-msg"></p>
+    </form>
+  </section>
+<div id="message-flash" class="flash-message" style="display: none;"></div>
+  <section id="reservations-section">
+    <h2>Mes réservations</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Véhicule</th>
+          <th>Date début</th>
+          <th>Date fin</th>
+          <th>Statut</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="reservations-list">
+        <!-- Rempli par JS -->
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <button id="delete-account-btn" class="danger-btn">
+      Supprimer mon compte
+    </button>
+  </section>
+  <!-- Modal de modification réservation -->
+<div id="editModal" class="modal" style="display:none;">
+  <div class="modal-content">
+    <span id="closeModal" class="close">&times;</span>
+    <h2>Modifier la réservation</h2>
+    <form id="editForm">
+      <input type="hidden" id="editReservationId" />
+      <label for="dateDebut">Date début :</label>
+      <input type="date" id="dateDebut" name="dateDebut" required />
+
+      <label for="dateFin">Date fin :</label>
+      <input type="date" id="dateFin" name="dateFin" required />
+
+      <button type="submit">Enregistrer</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer>
+  <p>© 2025 LibertyDrive. Tous droits réservés.</p>
+</footer>
+  <script src="../js/moncompte.js"></script>
+</body>
+</html>
